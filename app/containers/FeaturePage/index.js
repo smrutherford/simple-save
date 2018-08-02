@@ -4,14 +4,11 @@
  * List all the features
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
 
-import H1 from 'components/H1';
-import messages from './messages';
 import List from './List';
 import ListItem from './ListItem';
-import ListItemTitle from './ListItemTitle';
 
 export default class FeaturePage extends React.Component {
   // eslint-disable-line react/prefer-stateless-function
@@ -25,62 +22,22 @@ export default class FeaturePage extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>Feature Page</title>
+          <title>Saved Entries Page</title>
           <meta
-            name="description"
-            content="Feature page of React.js Boilerplate application"
+            name="database"
+            content="Entries saved to database"
           />
         </Helmet>
-        <H1>
-          <FormattedMessage {...messages.header} />
-        </H1>
         <List>
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.scaffoldingHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.scaffoldingMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.feedbackHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.feedbackMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.routingHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.routingMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.networkHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.networkMessage} />
-            </p>
-          </ListItem>
-
-          <ListItem>
-            <ListItemTitle>
-              <FormattedMessage {...messages.intlHeader} />
-            </ListItemTitle>
-            <p>
-              <FormattedMessage {...messages.intlMessage} />
-            </p>
-          </ListItem>
+          {this.props.savedEntries.map(savedEntry => (
+            <ListItem>{savedEntry}</ListItem>
+          ))}
         </List>
       </div>
     );
   }
 }
+
+FeaturePage.propTypes = {
+  savedEntries: PropTypes.array,
+};

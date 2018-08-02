@@ -12,7 +12,6 @@ import { FormattedNumber } from 'react-intl';
 
 import { makeSelectCurrentUser } from 'containers/App/selectors';
 import ListItem from 'components/ListItem';
-import IssueIcon from './IssueIcon';
 import IssueLink from './IssueLink';
 import RepoLink from './RepoLink';
 import Wrapper from './Wrapper';
@@ -35,7 +34,6 @@ export class RepoListItem extends React.PureComponent {
           {nameprefix + item.name}
         </RepoLink>
         <IssueLink href={`${item.html_url}/issues`} target="_blank">
-          <IssueIcon />
           <FormattedNumber value={item.open_issues_count} />
         </IssueLink>
       </Wrapper>

@@ -1,6 +1,6 @@
-import NormalA from 'components/A';
+import styled from 'styled-components';
 
-const RepoLink = NormalA.extend`
+const RepoLink = styled.a`
   height: 100%;
   color: black;
   display: flex;

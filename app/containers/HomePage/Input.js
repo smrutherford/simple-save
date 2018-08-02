@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 
-const Input = styled.input`
-  outline: none;
-  border-bottom: 1px dotted #999;
+const TextArea = styled.textarea`
+  width: 60%;
+  height: 200px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
 `;
 
-export default Input;
+export default TextArea;

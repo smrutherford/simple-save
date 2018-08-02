@@ -2,6 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
+const db = require('../database/index.js');
 
 const argv = require('./argv');
 const port = require('./port');
@@ -21,6 +22,27 @@ const app = express();
 setup(app, {
   outputPath: resolve(process.cwd(), 'build'),
   publicPath: '/',
+});
+
+app.get('/entries', (req, res) => {
+  db.getEntries((err, entries) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.status(200).send(entries);
+    }
+  });
+});
+
+app.post('/entries', (req, res) => {
+  const newEntry = req.body;
+  db.saveEntry(newEntry, err => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.status(201).send(`saved new entry: ${newEntry}`);
+    }
+  });
 });
 
 // get the intended host and port number, use localhost and port 3000 if not provided

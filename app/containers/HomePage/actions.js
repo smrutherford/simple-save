@@ -15,18 +15,18 @@
  *    }
  */
 
-import { CHANGE_USERNAME } from './constants';
+import { CHANGE_ENTRY } from './constants';
 
 /**
  * Changes the input field of the form
  *
- * @param  {name} name The new text of the input field
+ * @param  {entry} name The new entry of the input field
  *
- * @return {object}    An action object with a type of CHANGE_USERNAME
+ * @return {object}    An action object with a type of CHANGE_ENTRY
  */
-export function changeUsername(name) {
+export function changeEntry(entry) {
   return {
-    type: CHANGE_USERNAME,
-    name,
+    type: CHANGE_ENTRY,
+    entry,
   };
 }

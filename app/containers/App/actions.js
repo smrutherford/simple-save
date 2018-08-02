@@ -15,45 +15,58 @@
  *    }
  */
 
-import { LOAD_REPOS, LOAD_REPOS_SUCCESS, LOAD_REPOS_ERROR } from './constants';
+import { LOAD_ENTRIES, LOAD_ENTRIES_SUCCESS, LOAD_ENTRIES_ERROR, SAVE_ENTRY } from './constants';
 
 /**
- * Load the repositories, this action starts the request saga
+ * Load the entries, this action starts the request saga
  *
- * @return {object} An action object with a type of LOAD_REPOS
+ * @return {object} An action object with a type of LOAD_ENTRIES
  */
-export function loadRepos() {
+export function loadEntries() {
   return {
-    type: LOAD_REPOS,
+    type: LOAD_ENTRIES,
   };
 }
 
 /**
- * Dispatched when the repositories are loaded by the request saga
+ * Dispatched when the entries are loaded by the request saga
  *
- * @param  {array} repos The repository data
- * @param  {string} username The current username
+ * @param  {array} entries The saved entries
  *
- * @return {object}      An action object with a type of LOAD_REPOS_SUCCESS passing the repos
+ * @return {object}      An action object with a type of LOAD_ENTRIES_SUCCESS passing the entries
  */
-export function reposLoaded(repos, username) {
+export function entriesLoaded(entries) {
   return {
-    type: LOAD_REPOS_SUCCESS,
-    repos,
-    username,
+    type: LOAD_ENTRIES_SUCCESS,
+    entries,
   };
 }
 
 /**
- * Dispatched when loading the repositories fails
+ * Dispatched when loading the entries fails
  *
  * @param  {object} error The error
  *
- * @return {object}       An action object with a type of LOAD_REPOS_ERROR passing the error
+ * @return {object}       An action object with a type of LOAD_ENTRIES_ERROR passing the error
  */
-export function repoLoadingError(error) {
+export function entriesLoadingError(error) {
   return {
-    type: LOAD_REPOS_ERROR,
+    type: LOAD_ENTRIES_ERROR,
     error,
+  };
+}
+
+/**
+ * Dispatched when saving a new enry
+ *
+ * @param  {object} entry The entry
+ *
+ * @return {object}       An action object with a type of LOAD_ENTRIES_ERROR passing the entry
+ */
+
+export function saveEntry(entry) {
+  return {
+    type: SAVE_ENTRY,
+    entry,
   };
 }
